@@ -3,6 +3,13 @@ import Expense from '../models/Expense.js';
 import authMiddleware from '../middleware/auth.js';
 
 const router = express.Router();
+router.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'ok',
+    message: 'Vyapar-Saathi API is running',
+    timestamp: new Date().toISOString(),
+  });
+});
 router.use(authMiddleware);
 router.post('/', async (req, res) => {
   try {
